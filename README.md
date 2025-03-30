@@ -3,7 +3,7 @@ Description: Tools that are beneficial to students in college
 
 ## cold email
 ### Structure
-An automated email sending toolkit 
+A batch email sending toolkit 
 - **tools components**
     - **`load_db`**: where you specify recipients ("email", "firstName lastName")
     - **`models`**: where your db methods are specified
@@ -16,7 +16,7 @@ An automated email sending toolkit
 
 ## drive-backup (Google)
 ### Structure
-An automated workflow (via github action) for repo push and backup notes into google drive
+A automated workflow (via github action) for repo push and backup notes into google drive
 
 - **backup_script**: 
     - components: authentication(), upload_file(), upload_folder()
