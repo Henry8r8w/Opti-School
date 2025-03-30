@@ -1,0 +1,11 @@
+Hi <Representative>,
+
+You are receiving this email for an test email from <Sender> at <Entity> to test a python script on automating our company email outreach. 
+
+If you have successfully received this email, please reply with "received" so that I can confirm the success of the script.
+
+Best,
+<Sender>
+
+
+

@@ -1,0 +1,6 @@
+*.db
+*cache*
+notes/
+
+**other tools/
+**.json

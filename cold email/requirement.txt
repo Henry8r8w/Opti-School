@@ -1,0 +1,8 @@
+matplotlib
+pandas
+collections
+smtplib
+email
+os
+typing
+sqlite3

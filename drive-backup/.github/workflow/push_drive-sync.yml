@@ -1,0 +1,39 @@
+name: Sync Obsidian Notes to GitHub & Pinecone
+on:
+  schedule:
+    - cron: "0 0 1 1-12 *" # Runs at every 1th of the month
+  workflow_dispatch: 
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  
+      pages: write     
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set Up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions@github.com"
+          git add .
+          git commit -m "Automated sync of github repo" || echo "No changes to commit"
+          git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/yourgithubusername/yourgithubrepo.git
+          git push origin HEAD:main
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Syc Notes to Drive
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: python backup_script.py
